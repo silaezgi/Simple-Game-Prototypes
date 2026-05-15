@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Guess</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <header class="brand">
+      <span class="brand-icon" aria-hidden="true"></span>
+      <span class="brand-text">Word Guess</span>
+    </header>
+
+    <!-- Step 1: Character selection (simple icons) -->
+    <section id="character-section" class="character-section">
+      <p class="screen-label">Choose your character</p>
+      <div class="character-grid">
+        <button type="button" class="character-card" data-character="boy" aria-label="Boy">
+          <span class="character-preview character-preview-simple">
+            <svg viewBox="0 0 64 96" aria-hidden="true">
+              <circle cx="32" cy="20" r="14" fill="currentColor"/>
+              <rect x="22" y="34" width="20" height="28" rx="4" fill="currentColor"/>
+              <rect x="24" y="62" width="8" height="22" rx="3" fill="currentColor"/>
+              <rect x="32" y="62" width="8" height="22" rx="3" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="character-name">Boy</span>
+        </button>
+        <button type="button" class="character-card" data-character="girl" aria-label="Girl">
+          <span class="character-preview character-preview-simple">
+            <svg viewBox="0 0 64 96" aria-hidden="true">
+              <path d="M32 8 Q12 12 14 28 Q16 20 32 22 Q48 20 50 28 Q52 12 32 8 Z" fill="currentColor"/>
+              <circle cx="32" cy="28" r="14" fill="currentColor"/>
+              <rect x="20" y="42" width="24" height="32" rx="4" fill="currentColor"/>
+              <rect x="22" y="74" width="8" height="18" rx="3" fill="currentColor"/>
+              <rect x="34" y="74" width="8" height="18" rx="3" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="character-name">Girl</span>
+        </button>
+        <button type="button" class="character-card" data-character="animal" aria-label="Animal">
+          <span class="character-preview character-preview-simple">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M26 18 L32 4 L38 18 Z M44 18 L50 4 L56 18 Z" fill="currentColor"/>
+              <circle cx="32" cy="34" r="18" fill="currentColor"/>
+              <circle cx="32" cy="40" r="5" fill="currentColor"/>
+              <line x1="18" y1="38" x2="8" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18" y1="42" x2="6" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18" y1="46" x2="8" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="46" y1="38" x2="56" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="46" y1="42" x2="58" y2="42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="46" y1="46" x2="56" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="character-name">Animal</span>
+        </button>
+        <button type="button" class="character-card" data-character="robot" aria-label="Robot">
+          <span class="character-preview character-preview-simple">
+            <svg viewBox="0 0 64 96" aria-hidden="true">
+              <rect x="20" y="4" width="24" height="28" rx="3" fill="currentColor"/>
+              <rect x="22" y="34" width="20" height="36" rx="3" fill="currentColor"/>
+              <rect x="14" y="44" width="12" height="8" rx="2" fill="currentColor"/>
+              <rect x="38" y="44" width="12" height="8" rx="2" fill="currentColor"/>
+              <rect x="26" y="72" width="6" height="20" rx="2" fill="currentColor"/>
+              <rect x="32" y="72" width="6" height="20" rx="2" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="character-name">Robot</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 2: Category selection (with pictures) -->
+    <section id="category-section" class="category-section hidden">
+      <p class="screen-label">Choose a category</p>
+      <div class="category-grid" id="category-grid"></div>
+    </section>
+
+    <!-- Step 3: Game -->
+    <section id="game-section" class="game-section hidden">
+      <p id="game-category" class="game-category" aria-live="polite"></p>
+      <div class="figure-wrapper">
+        <div id="figure-boy" class="figure-container figure-character hidden">
+          <svg class="stick-figure" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle id="part-boy-head" class="figure-part" cx="60" cy="30" r="20" />
+            <line id="part-boy-body" class="figure-part" x1="60" y1="50" x2="60" y2="100" stroke-width="4" />
+            <line id="part-boy-arm-left" class="figure-part" x1="60" y1="65" x2="25" y2="85" stroke-width="4" />
+            <line id="part-boy-arm-right" class="figure-part" x1="60" y1="65" x2="95" y2="85" stroke-width="4" />
+            <line id="part-boy-leg-left" class="figure-part" x1="60" y1="100" x2="30" y2="150" stroke-width="4" />
+            <line id="part-boy-leg-right" class="figure-part" x1="60" y1="100" x2="90" y2="150" stroke-width="4" />
+          </svg>
+        </div>
+        <div id="figure-girl" class="figure-container figure-character hidden">
+          <svg class="stick-figure" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle id="part-girl-head" class="figure-part" cx="60" cy="28" r="18" />
+            <path id="part-girl-hair" class="figure-part" d="M 42 28 Q 60 8 78 28" fill="none" stroke-width="3" />
+            <line id="part-girl-body" class="figure-part" x1="60" y1="46" x2="60" y2="92" stroke-width="4" />
+            <line id="part-girl-arm-left" class="figure-part" x1="60" y1="60" x2="28" y2="78" stroke-width="4" />
+            <line id="part-girl-arm-right" class="figure-part" x1="60" y1="60" x2="92" y2="78" stroke-width="4" />
+            <path id="part-girl-leg-left" class="figure-part" d="M 60 92 L 35 150" stroke-width="4" fill="none" />
+            <path id="part-girl-leg-right" class="figure-part" d="M 60 92 L 85 150" stroke-width="4" fill="none" />
+          </svg>
+        </div>
+        <div id="figure-animal" class="figure-container figure-character hidden">
+          <svg class="stick-figure stick-figure-cat" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle id="part-animal-head" class="figure-part" cx="60" cy="42" r="20" fill="none" stroke-width="3" />
+            <ellipse id="part-animal-body" class="figure-part" cx="60" cy="82" rx="22" ry="28" fill="none" stroke-width="4" />
+            <path id="part-animal-tail" class="figure-part" d="M 80 75 Q 105 55 108 28" fill="none" stroke-width="4" />
+            <path id="part-animal-leg-left" class="figure-part" d="M 48 98 L 32 152 M 42 108 L 28 158" fill="none" stroke-width="4" />
+            <path id="part-animal-leg-right" class="figure-part" d="M 72 98 L 88 152 M 78 108 L 92 158" fill="none" stroke-width="4" />
+            <path id="part-animal-ear" class="figure-part" d="M 42 32 L 48 12 L 54 34 Z M 66 32 L 72 12 L 78 34 Z" fill="none" stroke-width="2" />
+          </svg>
+        </div>
+        <div id="figure-robot" class="figure-container figure-character hidden">
+          <svg class="stick-figure" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path id="part-robot-head" class="figure-part" d="M 60 0 L 60 10 L 80 10 L 80 48 L 40 48 L 40 10 L 60 10 Z" fill="none" stroke-width="3" />
+            <rect id="part-robot-body" class="figure-part" x="45" y="48" width="30" height="52" rx="3" fill="none" stroke-width="3" />
+            <line id="part-robot-arm-left" class="figure-part" x1="45" y1="65" x2="15" y2="80" stroke-width="4" />
+            <line id="part-robot-arm-right" class="figure-part" x1="75" y1="65" x2="105" y2="80" stroke-width="4" />
+            <line id="part-robot-leg-left" class="figure-part" x1="52" y1="100" x2="35" y2="155" stroke-width="4" />
+            <line id="part-robot-leg-right" class="figure-part" x1="68" y1="100" x2="85" y2="155" stroke-width="4" />
+          </svg>
+        </div>
+      </div>
+
+      <div id="word-display" class="word-display"></div>
+      <p id="message" class="message"></p>
+      <div id="letter-grid" class="letter-grid"></div>
+      <div class="game-actions">
+        <button type="button" id="play-again-btn" class="btn btn-primary hidden">Play again</button>
+        <button type="button" id="change-character-btn" class="btn btn-secondary hidden">Change character</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
